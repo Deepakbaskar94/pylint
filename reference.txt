@@ -1,0 +1,53 @@
+Link: https://www.geeksforgeeks.org/pylint-module-in-python/
+
+Pylint Uses: 
+
+        1. Lists Errors which comes after execution of that Python code
+        2. Enforces a coding standard and looks for code smells
+        3. Suggest how particular blocks can be updated
+        4. Offer details about the code’s complexity
+        5. Pylint tool is similar to pychecker, pyflakes, flake8, and mypy.
+        
+========================================================================================================================================================
+
+1. Installation:
+    pip install pylint 
+
+2. To verify the pylint installation, type the following command:
+    pylint --version
+
+3. Working with Pylint:
+                      a = 1
+                      b = 2
+                      print(a + b)
+
+    pylint gfg.py
+
+4. Error Definition:
+            1.	C	Convention	It is displayed when the program is not following the standard rules.
+            2.	R	Refactor	It is displayed for bad code smell
+            3.	W	Warning	    It is displayed for python specific problems
+            4.	E	Error	    It is displayed when that particular line execution results some error
+            5.	F	Fatal	    It is displayed when pylint has no access to further process that line.
+    
+    
+Errors:
+
+ID C0326 suggest a bad-white space error means we need to give a whitespace between a and = symbol. This rule is applicable to all declarations where an operator is used immediately after an identifier.
+ID C0304 comes under missing-new-line suggestion which means we have to add a blank line when we complete our code.
+ID C0114 comes under missing-module-docstring suggestion which means we need to add a docstring at the top which refers to the use of the program written below that.
+ID C0103 comes under invalid-name suggestion which can be avoided by writing the identifiers start with a capital letter. But, we usually believe that class names use CamelCasing i.e class names start with an upper-case letter. To avoid this suggestion we will add a regular expression to pylint that actually accepts all the variables in the lowercase letters. We will discuss this more in the further examples.
+
+5. The modified version of the code is: 
+
+              '''
+              This program adds two numbers and displays their results
+              '''
+              A = 1
+              B = 2
+              print('Sum of Numbers:', A + B)
+              
+              
+6. This will add small letter starting variable (optional)
+        pylint --const-rgx='[a-z\_][a-z0-9\_]{2, 30}$' filename.py
+   This will avoid the use of the uppercase convention. We can modify that permanently by changing rules in pylint –generate-rcfile which we will discuss in future articles.
